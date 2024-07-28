@@ -4,7 +4,8 @@ import 'package:hospital_assistant/screens/Event_notifier/shared/network/local/c
 import 'package:hospital_assistant/screens/Event_notifier/shared/network/local/notification.dart';
 import 'package:hospital_assistant/screens/splash/splash_screen.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import 'api.dart';
+
+import 'api_key.dart';
 import 'routes.dart';
 import 'theme.dart';
 import 'package:get/get.dart';
@@ -18,27 +19,27 @@ void main()async{
   );
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
 
   // NOTE : catch notification  with parameter while app is closed and when on press notification
-  FirebaseMessaging.onMessageOpenedApp.listen((message) {
-    print("message data opened " + message.data.toString());
-    //showToast(message: "on message opened", status: ToastStatus.Success);
-  });
+  // FirebaseMessaging.onMessageOpenedApp.listen((message) {
+  //   print("message data opened " + message.data.toString());
+  //   //showToast(message: "on message opened", status: ToastStatus.Success);
+  // });
 
   await CashHelper.init();
 
 // NOTE Notification
-  await NotificationApi.init();
+//   await NotificationApi.init();
 
   // NOTE check cash theme and set it to Get
-  bool? isdarkcashedthem = CashHelper.getThem(key: "isdark");
-  print("cash theme " + isdarkcashedthem.toString());
-  if (isdarkcashedthem != null) {
-    Get.changeTheme(isdarkcashedthem ? Themes.darkThem : Themes.lightTheme);
-  }
+  // bool? isdarkcashedthem = CashHelper.getThem(key: "isdark");
+  // print("cash theme " + isdarkcashedthem.toString());
+  // if (isdarkcashedthem != null) {
+  //   Get.changeTheme(isdarkcashedthem ? Themes.darkThem : Themes.lightTheme);
+  // }
 
-  Get.put(TodoLayoutController());
+  // Get.put(TodoLayoutController());
   runApp(const MyApp());
 
 }
